@@ -1,0 +1,70 @@
+*{
+    margin: 0px;
+    padding: 0px;
+    /* outline: 1px dotted darkred; */
+}
+
+#wrapper{
+    width: 940px;
+    height: 940px;
+    margin: 0px auto;
+    display: flex;
+    flex-direction: column;
+    /* justify-content: center; */
+}
+#header{
+    display: inline-flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+#main{
+    display: inline-flex;
+    flex-direction: row;
+}
+fieldset{
+    width: 333px;
+    height: 215px;
+    padding: 10px;
+    margin-left: 10px;
+}
+label{
+    width: 125px;
+    display: inline-block;
+    font-size:20px;
+    font-weight: bold;
+}
+.fields{
+    width: 200px;
+}
+legend{
+    font-size: 30px;
+    font-weight: bold;
+}
+.subButtons{
+    font-size: 20px;
+    padding: 3px;
+    margin: 5px 0px;
+}
+.review{
+    border-top: 2px solid black;
+    padding: 10px;
+}
+.review_innards{
+    margin-left: 10px;
+}
+.title_link{
+    font-weight: bold;
+    font-size:20px;
+    text-decoration: none;
+}
+#other_books{
+    width: 240px;
+    height: 380px;
+    padding: 10px;
+    border: 2px solid black;
+}
+#right{
+    margin-left: 20px;
+
+}

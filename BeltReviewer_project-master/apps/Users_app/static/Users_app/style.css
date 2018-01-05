@@ -1,0 +1,42 @@
+*{
+    margin: 0px;
+    padding: 0px;
+    /* outline: 1px dotted darkred; */
+}
+
+#wrapper{
+    width: 970px;
+    height: 970px;
+    margin: 0px auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+
+}
+fieldset{
+    width: 333px;
+    height: 215px;
+    padding: 10px;
+    margin-left: 10px;
+}
+label{
+    width: 125px;
+    display: inline-block;
+    font-size:20px;
+    font-weight: bold;
+}
+.fields{
+    width: 200px;
+}
+legend{
+    font-size: 30px;
+    font-weight: bold;
+}
+.subButtons{
+    font-size: 20px;
+    padding: 3px;
+    margin: 5px 0px;
+}
+h1{
+    margin-left: 225px;
+}

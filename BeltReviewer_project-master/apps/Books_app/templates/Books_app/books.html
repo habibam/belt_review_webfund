@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Add Book and Review</title>
+    {% load static %}
+    <link rel="stylesheet" type ="text/css" href="{% static 'Books_app/style.css' %}">
+
+</head>
+<body>
+    <div id="wrapper">
+        <div id='header'>
+                <h1>Welcome  {{ alias }}</h1>
+                <div>
+                    <a href="/books/add">Add Book & Review</a>
+                    <a href="/logout">Logout</a>
+                </div>
+        </div>
+        <div id="main">
+            <div id="recent_reviews">
+                    <h2>Recent Book Reviews:</h2>
+                    {% for review in first_3 %}
+                        <div class='review'>
+                            <a href="/books/{{ review.book.id }}" class="title_link">{{ review.book.title }}</a>
+                            <div class="review_innards">
+                                <p>Rating: {{ review.rating }}</p><br>
+                                <p><a href="/users/{{ review.reviewer.id }}">{{ review.reviewer.alias }}</a> says: {{ review.thisReview }}</p><br>
+                                <p>Posted on {{ review.created_at }}</p>
+                            </div>
+                        </div>
+                    {% endfor %}
+            </div>
+
+            <div id="right">
+                <h2>Other Books Reviews:</h2>
+                <div id="other_books">
+                        {% for review in otherBooks %}
+                            <a href="/books/{{ review.book.id }}">{{ review.book.title }}</a><br>
+                        {% endfor %}
+                    <!-- css overflow:auto to scroll -->
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Add Book and Revuew</title>
+</head>
+<body>
+    <div class='header'>
+            <a href="/books">Home</a>
+            <a href="/logout">Logout</a>
+    </div>
+
+    <h1>Add A New Book Title And A Review</h1>
+
+    {% if messages %}
+        {% for error in messages %}
+            <p class='error'>{{ error }}</p>
+        {% endfor %}
+    {% endif %}
+
+    <form action="/books/addReview" method="post">
+        {% csrf_token %}
+
+        <label for="title">Book Title: </label>
+        <input type="text" name="title" id="title"><br>
+
+        <label for="author">Author:</label>
+        
+        <ul>
+            <li>
+                <label for="author">Choose from the list:</label>
+                <select name="author" id="author">
+                    <option value="">Select Author....</option>
+                    {% for author in authors %}
+                        <option value="{{ author.id }}">{{ author.name}}</option>
+                    {% endfor %}
+                </select>
+            </li>
+            <li>
+                <label for="new_author">Or add a new author</label>
+                <input type="text" name="new_author" id="new_author"><br>
+            </li>
+        </ul>
+        
+        <label for="review">Review:</label>
+        <textarea name="review" id="review" cols="30" rows="10"></textarea><br>
+        
+        <label for="rating">Rating:</label>
+        <select name="rating" id="rating">
+            <option value="0"> </option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+        </select><br>
+
+        <button type="submit">Add Book and Review</button>
+    </form>
+</body>
+</html>

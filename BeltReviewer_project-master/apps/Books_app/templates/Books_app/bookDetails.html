@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="UTF-8">
+        <title>{{ title }}</title>
+        {% load static %}
+        <link rel="stylesheet" type ="text/css" href="{% static 'Books_app/style.css' %}">
+    
+    </head>
+<body>
+    <div id=wrapper>
+        <div id="header">
+            <h1>{{ title }}</h1>
+            <div>
+                <a href="/books">Home</a>
+                <a href="/logout">Logout</a>
+            </div>
+        </div>
+
+        <h2>Author: {{ author }}</h2>
+        <div id="main">
+            <div id="reviews">
+                <h3>Reviews:</h3>
+                    
+                    <!-- reviews for this book, ordered by most recent -->
+                    {% for review in reviews %}
+                        <div class="review">
+                            <p>Rating: {{ review.rating }}</p>
+                            <p><a href="/users/{{ review.reviewer.id }}">{{ review.reviewer.alias }}</a> says: {{ review.thisReview }}</p>
+                            <p>Posted on {{ review.created_at }}</p>
+                            <!-- a link to delete review IF reviewer is logged in -->
+                            {% if request.session.userID == review.reviewer.id %}
+                                <a href="/books/{{ bookID }}/delete/{{ review.id }}">Delete this review</a>
+                            {% endif %}
+                        </div>
+                    {% endfor %}
+                
+            </div>
+
+            {% if messages %}
+                    {% for error in messages %}
+                        <p class='error'>{{ error }}</p>
+                    {% endfor %}
+                {% endif %}
+
+            <form action="/books/{{ bookID }}/addReview" method="post" id="right">
+                    {% csrf_token %}
+                    <input type="hidden" name="title" value="{{ title }}">
+                    <input type="hidden" name="author" value="{{ author }}">
+
+                    <h4>Add A Review</h4>
+
+                    <textarea name="review" id="review" cols="50" rows="10"></textarea><br>
+                    
+                    <label for="rating">Rating:</label>
+                    <select name="rating" id="rating">
+                        <option value="0"> </option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                    </select><br>
+
+                    <input type="submit" value="Submit Review">
+            </form>
+        </div>
+    </div>
+</body>
+</html>
